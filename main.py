@@ -485,6 +485,7 @@ def main():
     if not DATA_DIR.exists():
         st.info(f"Skapa mappen {DATA_DIR} och lägg dina polygonfiler där.")
         return
+    
     sources, problems = discover_sources()
     if problems:
         with st.expander("Filer som inte kunde läsas"):
@@ -494,6 +495,7 @@ def main():
         st.warning("Inga läsbara spatiala filer hittades i data/.")
         return
     names = area_names(sources)
+    
     with st.sidebar:
         st.header("Välj område")
         selected = st.multiselect("Polygonfiler", options=list(sources), format_func=names.get)
